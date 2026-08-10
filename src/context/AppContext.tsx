@@ -114,6 +114,8 @@ const AppContext = createContext<AppContextType | undefined>(undefined);
 const uid = () => `${Date.now()}-${Math.random().toString(36).slice(2, 7)}`;
 const nowStr = () => new Date().toISOString().replace('T', ' ').slice(0, 16);
 
+import { seedInitialDataIfEmpty } from '../lib/seedSupabase';
+
 // ─── Provider ─────────────────────────────────────────────────────────────────
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [activeTab, setActiveTab] = useState<PublicTab>('home');
@@ -145,6 +147,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     async function loadAll() {
       setLoading(true);
       try {
+        await seedInitialDataIfEmpty();
+
         const [
           settings, newsData, programsData, agendaData, galleryData,
           boardData, membersData, regsData, feedbacksData, faqsData,
@@ -171,18 +175,35 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
           board: boardData.length, members: membersData.length
         });
         if (settings) setSiteSettings(settings as SiteSettings);
-        setNews(newsData.length > 0 ? newsData : initialNews);
-        setPrograms(programsData.length > 0 ? programsData : initialPrograms);
-        setAgenda(agendaData.length > 0 ? agendaData : initialAgenda);
-        setGallery(galleryData.length > 0 ? galleryData : initialGallery);
-        setBoard(boardData.length > 0 ? boardData : initialBoardMembers);
-        setMembers(membersData.length > 0 ? membersData : initialMembers);
-        setRegistrations(regsData.length > 0 ? regsData : initialRegistrations);
-        setFeedbacks(feedbacksData);
-        setFaqs(faqsData.length > 0 ? faqsData : initialFAQs);
-        setMeetingMinutes(minutesData.length > 0 ? minutesData : initialMeetingMinutes);
-        setTransactions(transactionsData && transactionsData.length > 0 ? transactionsData : initialTransactions);
-        setAchievements(achievementsData.length > 0 ? achievementsData : initialAchievements);
+
+        const isSeeded = typeof window !== 'undefined' && localStorage.getItem('KT_DB_SEEDED_V2');
+        if (isSeeded) {
+          setNews(newsData);
+          setPrograms(programsData);
+          setAgenda(agendaData);
+          setGallery(galleryData);
+          setBoard(boardData);
+          setMembers(membersData);
+          setRegistrations(regsData);
+          setFeedbacks(feedbacksData);
+          setFaqs(faqsData);
+          setMeetingMinutes(minutesData);
+          setTransactions(transactionsData || []);
+          setAchievements(achievementsData);
+        } else {
+          setNews(newsData.length > 0 ? newsData : initialNews);
+          setPrograms(programsData.length > 0 ? programsData : initialPrograms);
+          setAgenda(agendaData.length > 0 ? agendaData : initialAgenda);
+          setGallery(galleryData.length > 0 ? galleryData : initialGallery);
+          setBoard(boardData.length > 0 ? boardData : initialBoardMembers);
+          setMembers(membersData.length > 0 ? membersData : initialMembers);
+          setRegistrations(regsData.length > 0 ? regsData : initialRegistrations);
+          setFeedbacks(feedbacksData);
+          setFaqs(faqsData.length > 0 ? faqsData : initialFAQs);
+          setMeetingMinutes(minutesData.length > 0 ? minutesData : initialMeetingMinutes);
+          setTransactions(transactionsData && transactionsData.length > 0 ? transactionsData : initialTransactions);
+          setAchievements(achievementsData.length > 0 ? achievementsData : initialAchievements);
+        }
       } catch (err) {
         console.error('[AppContext] Gagal load data dari Supabase:', err);
       } finally {
