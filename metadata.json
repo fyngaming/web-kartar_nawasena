@@ -1,0 +1,6 @@
+{
+  "name": "Karang Taruna Nawasena",
+  "description": "Website Resmi & CMS Karang Taruna Nawasena Perum Graha Selokaton Indah (GSI) Ngangkruk, Gondangrejo, Karanganyar",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
