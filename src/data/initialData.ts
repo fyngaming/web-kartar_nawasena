@@ -88,9 +88,111 @@ export const initialAdminUsers: UserAccount[] = [
   }
 ];
 
-export const initialMembers: MemberData[] = [];
+export const initialMembers: MemberData[] = [
+  {
+    id: 'NAW-2026-001',
+    registrationId: 'KT-2026-0001',
+    fullName: 'Aditya Pratama',
+    gender: 'Laki-laki',
+    address: 'Perum Graha Selokaton Indah Blok A No. 12',
+    rtRw: '04/15',
+    whatsapp: '081234567001',
+    email: 'aditya.pratama@gmail.com',
+    interests: ['Olahraga', 'Teknologi & Multimedia'],
+    status: 'Aktif',
+    joinedDate: '2026-01-15',
+    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80'
+  },
+  {
+    id: 'NAW-2026-002',
+    registrationId: 'KT-2026-0002',
+    fullName: 'Nabila Putri Permata',
+    gender: 'Perempuan',
+    address: 'Perum Graha Selokaton Indah Blok B No. 05',
+    rtRw: '04/15',
+    whatsapp: '081234567002',
+    email: 'nabila.putri@gmail.com',
+    interests: ['Kewirausahaan & UMKM', 'Seni & Budaya'],
+    status: 'Aktif',
+    joinedDate: '2026-02-01',
+    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80'
+  },
+  {
+    id: 'NAW-2026-003',
+    registrationId: 'KT-2026-0003',
+    fullName: 'Bagas Prasetyo',
+    gender: 'Laki-laki',
+    address: 'Perum Graha Selokaton Indah Blok C No. 08',
+    rtRw: '04/15',
+    whatsapp: '081234567003',
+    email: 'bagas.prasetyo@gmail.com',
+    interests: ['Olahraga', 'Lingkungan Hidup'],
+    status: 'Aktif',
+    joinedDate: '2026-02-10',
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80'
+  }
+];
 
-export const initialRegistrations: RegistrationData[] = [];
+export const initialRegistrations: RegistrationData[] = [
+  {
+    id: 'KT-2026-0001',
+    fullName: 'Aditya Pratama',
+    pob: 'Karanganyar',
+    dob: '2004-05-12',
+    gender: 'Laki-laki',
+    address: 'Perum Graha Selokaton Indah Blok A No. 12',
+    rtRw: '04/15',
+    whatsapp: '081234567001',
+    email: 'aditya.pratama@gmail.com',
+    education: 'S1 Teknik Informatika',
+    occupation: 'Software Engineer',
+    orgExperience: 'Ketua OSIS SMA (2021)',
+    motivation: 'Ingin berkontribusi aktif dalam kegiatan olahraga dan kepemudaan GSI Ngangkruk.',
+    interests: ['Olahraga', 'Teknologi & Multimedia'],
+    status: 'Diterima',
+    appliedAt: '2026-01-14 10:30',
+    processedAt: '2026-01-15 08:00',
+    memberId: 'NAW-2026-001'
+  },
+  {
+    id: 'KT-2026-0002',
+    fullName: 'Nabila Putri Permata',
+    pob: 'Surakarta',
+    dob: '2005-08-20',
+    gender: 'Perempuan',
+    address: 'Perum Graha Selokaton Indah Blok B No. 05',
+    rtRw: '04/15',
+    whatsapp: '081234567002',
+    email: 'nabila.putri@gmail.com',
+    education: 'D3 Manajemen Usaha',
+    occupation: 'Wirausaha Kuliner',
+    orgExperience: 'Anggota PMR (2022)',
+    motivation: 'Ingin mengembangkan UMKM kuliner muda serta kegiatan kreasi kerajinan.',
+    interests: ['Kewirausahaan & UMKM', 'Seni & Budaya'],
+    status: 'Diterima',
+    appliedAt: '2026-01-31 15:45',
+    processedAt: '2026-02-01 09:15',
+    memberId: 'NAW-2026-002'
+  },
+  {
+    id: 'KT-2026-0004',
+    fullName: 'Rizky Kurniawan',
+    pob: 'Boyolali',
+    dob: '2003-11-04',
+    gender: 'Laki-laki',
+    address: 'Perum Graha Selokaton Indah Blok D No. 14',
+    rtRw: '04/15',
+    whatsapp: '081234567004',
+    email: 'rizky.kurnia@gmail.com',
+    education: 'SMA Negeri 1 Gondangrejo',
+    occupation: 'Karyawan Swasta',
+    orgExperience: 'Pengurus Karang Taruna RT (2023)',
+    motivation: 'Ingin ikut serta mengelola tim multimedia dan event 17 Agustusan.',
+    interests: ['Teknologi & Multimedia', 'Olahraga'],
+    status: 'Menunggu Verifikasi',
+    appliedAt: '2026-08-08 19:20'
+  }
+];
 
 export const initialNews: NewsItem[] = [
   {
@@ -472,5 +574,74 @@ export const initialSponsors: SponsorItem[] = [
     name: 'Toko Kelontong Berkah GSI',
     logo: 'https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=300&auto=format&fit=crop&q=80',
     category: 'Sponsor Resmi'
+  }
+];
+
+export const initialMeetingMinutes: import('../types').MeetingMinutes[] = [
+  {
+    id: 'min-1',
+    meetingNumber: '01/RAP/KARTAR-NSW/VIII/2026',
+    title: 'Musyawarah Persiapan Panitia HUT RI ke-81 & Lomba Pemuda GSI',
+    type: 'Rapat Rutin Bulanan',
+    date: '2026-08-05',
+    startTime: '19:30',
+    endTime: '21:30',
+    location: 'Sekretariat GSI Ngangkruk',
+    facilitator: 'Favian Yusuf (Ketua)',
+    secretary: 'Rian Prasetyo (Sekretaris)',
+    attendees: 'Favian Yusuf, Rian Prasetyo, Siti Rahmawati, Aris Nugroho, Bagas Aditya',
+    absentees: '-',
+    quorum: 'Kuorum Terpenuhi (15 Pengurus)',
+    openingNotes: 'Rapat dibuka pukul 19.35 WIB oleh Ketua Umum dengan doa bersama dan pembacaan agenda rapat.',
+    agendaPoints: [
+      {
+        no: 1,
+        topic: 'Pembentukan Panitia Jalan Sehat 17 Agustus',
+        discussion: 'Disepakati pembagian seksi acara, konsumsi, perlengkapan, dan penggalangan sponsor.',
+        decision: 'Aris Nugroho ditunjuk sebagai Ketua Panitia Pelaksana Jalan Sehat.',
+        picName: 'Aris Nugroho',
+        deadline: '2026-08-12'
+      },
+      {
+        no: 2,
+        topic: 'Pengelolaan Kas Iuran Anggota',
+        discussion: 'Penyampaian laporan keuangan kas bulan Juli oleh Bendahara dan pembahasan iuran wajib.',
+        decision: 'Iuran anggota berjalan rutin tiap minggu dan dicatat digital via modul Bendahara.',
+        picName: 'Siti Rahmawati',
+        deadline: '2026-08-15'
+      }
+    ],
+    closingNotes: 'Rapat ditutup pukul 21.30 WIB dengan pembacaan hasil notulensi oleh Sekretaris.',
+    status: 'Final',
+    createdBy: 'Rian Prasetyo (Sekretaris)',
+    createdAt: '2026-08-05 21:40',
+    updatedAt: '2026-08-05 21:40'
+  }
+];
+
+export const initialTransactions: import('../types').FinancialTransaction[] = [
+  {
+    id: 'tx-1',
+    memberId: 'NAW-2026-001',
+    amount: 50000,
+    type: 'Setoran',
+    note: 'Setoran Kas Iuran Anggota Bulan Agustus 2026',
+    createdAt: '2026-08-01 10:00'
+  },
+  {
+    id: 'tx-2',
+    memberId: 'NAW-2026-002',
+    amount: 50000,
+    type: 'Setoran',
+    note: 'Setoran Kas Iuran Anggota Bulan Agustus 2026',
+    createdAt: '2026-08-02 11:30'
+  },
+  {
+    id: 'tx-3',
+    memberId: 'NAW-2026-003',
+    amount: 50000,
+    type: 'Setoran',
+    note: 'Setoran Kas Iuran Anggota Bulan Agustus 2026',
+    createdAt: '2026-08-03 14:15'
   }
 ];

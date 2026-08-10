@@ -15,7 +15,9 @@ import {
   Building2,
   Sparkles,
   Layers,
-  BarChart3
+  BarChart3,
+  ClipboardList,
+  Wallet
 } from 'lucide-react';
 import { NewsTab } from './tabs/NewsTab';
 import { ProgramsTab } from './tabs/ProgramsTab';
@@ -25,6 +27,8 @@ import { BoardTab } from './tabs/BoardTab';
 import { MembersTab } from './tabs/MembersTab';
 import { FeedbacksTab } from './tabs/FeedbacksTab';
 import { FAQTab } from './tabs/FAQTab';
+import { NotulensiTab } from './tabs/NotulensiTab';
+import { BendaharaTab } from './tabs/BendaharaTab';
 
 export const AdminDashboard: React.FC = () => {
   const {
@@ -68,7 +72,7 @@ export const AdminDashboard: React.FC = () => {
   // Tab yang boleh diakses setiap role
   const ADMIN_TABS: AdminTab[] = [
     'dashboard', 'registrations', 'members', 'news', 'programs',
-    'agenda', 'gallery', 'board', 'feedbacks', 'faqs', 'settings'
+    'agenda', 'gallery', 'board', 'notulensi', 'bendahara', 'feedbacks', 'faqs', 'settings'
   ];
   const allowedTabs = ADMIN_TABS;
 
@@ -87,6 +91,8 @@ export const AdminDashboard: React.FC = () => {
       badge: registrations.filter(r => r.status === 'Menunggu Verifikasi').length
     },
     { id: 'members', label: 'Data Anggota', icon: <Users className="w-4 h-4" />, badge: members.length },
+    { id: 'notulensi', label: 'Notulensi Rapat (Sekretaris)', icon: <ClipboardList className="w-4 h-4" /> },
+    { id: 'bendahara', label: 'Keuangan & Kas (Bendahara)', icon: <Wallet className="w-4 h-4" /> },
     { id: 'news', label: 'Berita & Pengumuman', icon: <FileText className="w-4 h-4" /> },
     { id: 'programs', label: 'Program Kerja', icon: <Layers className="w-4 h-4" /> },
     { id: 'agenda', label: 'Agenda & Event', icon: <Calendar className="w-4 h-4" /> },
@@ -439,10 +445,16 @@ export const AdminDashboard: React.FC = () => {
           {/* TAB 8: BOARD / STRUKTUR PENGURUS */}
           {adminTab === 'board' && <BoardTab />}
 
-          {/* TAB 9: FEEDBACKS / ASPIRASI */}
+          {/* TAB 9: NOTULENSI (SEKRETARIS) */}
+          {adminTab === 'notulensi' && <NotulensiTab />}
+
+          {/* TAB 10: BENDAHARA (KEUANGAN & KAS) */}
+          {adminTab === 'bendahara' && <BendaharaTab />}
+
+          {/* TAB 11: FEEDBACKS / ASPIRASI */}
           {adminTab === 'feedbacks' && <FeedbacksTab />}
 
-          {/* TAB 10: FAQ MANAGEMENT */}
+          {/* TAB 12: FAQ MANAGEMENT */}
           {adminTab === 'faqs' && <FAQTab />}
 
           {/* OTHER TABS - settings */}

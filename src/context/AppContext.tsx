@@ -7,7 +7,8 @@ import {
 import {
   initialSiteSettings, initialAdminUsers, initialFAQs,
   initialNews, initialPrograms, initialAgenda, initialGallery,
-  initialBoardMembers, initialAchievements
+  initialBoardMembers, initialAchievements, initialMembers, initialRegistrations,
+  initialMeetingMinutes, initialTransactions
 } from '../data/initialData';
 import * as svc from '../lib/supabaseService';
 import { supabase } from '../lib/supabase';
@@ -123,20 +124,20 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   // ── State ──────────────────────────────────────────────────────────────────
   const [siteSettings,  setSiteSettings]  = useState<SiteSettings>(initialSiteSettings);
-  const [members,       setMembers]       = useState<MemberData[]>([]);
-  const [registrations, setRegistrations] = useState<RegistrationData[]>([]);
-  const [news,          setNews]          = useState<NewsItem[]>([]);
-  const [programs,      setPrograms]      = useState<ProgramItem[]>([]);
-  const [agenda,        setAgenda]        = useState<AgendaItem[]>([]);
-  const [gallery,       setGallery]       = useState<GalleryItem[]>([]);
-  const [board,         setBoard]         = useState<BoardMember[]>([]);
-  const [achievements,  setAchievements]  = useState<AchievementItem[]>([]);
+  const [members,       setMembers]       = useState<MemberData[]>(initialMembers);
+  const [registrations, setRegistrations] = useState<RegistrationData[]>(initialRegistrations);
+  const [news,          setNews]          = useState<NewsItem[]>(initialNews);
+  const [programs,      setPrograms]      = useState<ProgramItem[]>(initialPrograms);
+  const [agenda,        setAgenda]        = useState<AgendaItem[]>(initialAgenda);
+  const [gallery,       setGallery]       = useState<GalleryItem[]>(initialGallery);
+  const [board,         setBoard]         = useState<BoardMember[]>(initialBoardMembers);
+  const [achievements,  setAchievements]  = useState<AchievementItem[]>(initialAchievements);
   const [feedbacks,     setFeedbacks]     = useState<FeedbackItem[]>([]);
-  const [faqs,          setFaqs]          = useState<FAQItem[]>([]);
+  const [faqs,          setFaqs]          = useState<FAQItem[]>(initialFAQs);
   const [sponsors,      setSponsors]      = useState<SponsorItem[]>([]);
   const [users,         setUsers]         = useState<UserAccount[]>(initialAdminUsers);
-  const [meetingMinutes,setMeetingMinutes]= useState<MeetingMinutes[]>([]);
-  const [transactions, setTransactions] = useState<FinancialTransaction[]>([]);
+  const [meetingMinutes,setMeetingMinutes]= useState<MeetingMinutes[]>(initialMeetingMinutes);
+  const [transactions, setTransactions] = useState<FinancialTransaction[]>(initialTransactions);
 
   // ── Load semua data dari Supabase saat pertama mount ──────────────────────
   useEffect(() => {
@@ -170,18 +171,18 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
           board: boardData.length, members: membersData.length
         });
         if (settings) setSiteSettings(settings as SiteSettings);
-        setNews(newsData);
-        setPrograms(programsData);
-        setAgenda(agendaData);
-        setGallery(galleryData);
-        setBoard(boardData);
-        setMembers(membersData);
-        setRegistrations(regsData);
+        setNews(newsData.length > 0 ? newsData : initialNews);
+        setPrograms(programsData.length > 0 ? programsData : initialPrograms);
+        setAgenda(agendaData.length > 0 ? agendaData : initialAgenda);
+        setGallery(galleryData.length > 0 ? galleryData : initialGallery);
+        setBoard(boardData.length > 0 ? boardData : initialBoardMembers);
+        setMembers(membersData.length > 0 ? membersData : initialMembers);
+        setRegistrations(regsData.length > 0 ? regsData : initialRegistrations);
         setFeedbacks(feedbacksData);
-        setFaqs(faqsData);
-        setMeetingMinutes(minutesData);
-        setTransactions(transactionsData || []);
-        setAchievements(achievementsData);
+        setFaqs(faqsData.length > 0 ? faqsData : initialFAQs);
+        setMeetingMinutes(minutesData.length > 0 ? minutesData : initialMeetingMinutes);
+        setTransactions(transactionsData && transactionsData.length > 0 ? transactionsData : initialTransactions);
+        setAchievements(achievementsData.length > 0 ? achievementsData : initialAchievements);
       } catch (err) {
         console.error('[AppContext] Gagal load data dari Supabase:', err);
       } finally {

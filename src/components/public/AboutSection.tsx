@@ -2,6 +2,7 @@ import React from 'react';
 import { useApp } from '../../context/AppContext';
 import { Target, Compass, Award, Heart, CheckCircle2, History, Shield, Users } from 'lucide-react';
 import { motion } from 'motion/react';
+import rapatImg from '@/assetImages/rapat/rapat.jfif';
 
 export const AboutSection: React.FC = () => {
   const { siteSettings } = useApp();
@@ -54,7 +55,7 @@ export const AboutSection: React.FC = () => {
           <div className="lg:col-span-6">
             <div className="relative rounded-3xl overflow-hidden border border-white/20 shadow-2xl backdrop-blur-xl">
               <img
-                src="/assetImages/rapat/rapat.jfif"
+                src={rapatImg}
                 alt="Kebersamaan Para Pemuda Karang Taruna Nawasena"
                 className="w-full h-80 sm:h-96 object-cover"
               />
