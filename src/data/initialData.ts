@@ -18,7 +18,7 @@ export const initialSiteSettings: SiteSettings = {
   orgName: 'Karang Taruna Nawasena',
   subName: 'Perum Graha Selokaton Indah (GSI) Ngangkruk',
   slogan: 'Aditya Karya Mahatvayodha — Pemuda Tangguh, Inovatif, & Berpengabdian',
-  address: 'Graha Selokaton Indah, Barat Lapangan Bola, RT 04 / RW 12, Ngangkruk, Selokaton',
+  address: 'Graha Selokaton Indah, Barat Lapangan Bola, RT 04 / RW 15, Ngangkruk, Selokaton',
   subDistrict: 'Gondangrejo',
   city: 'Kabupaten Karanganyar, Jawa Tengah',
   postalCode: '57188',
@@ -200,7 +200,7 @@ export const initialNews: NewsItem[] = [
     title: 'Sukses Gelar Senam Bersama & Bazaar UMKM Pemuda GSI Ngangkruk',
     slug: 'senam-bersama-bazaar-umkm-gsi-ngangkruk',
     summary: 'Karang Taruna Nawasena sukses mengumpulkan ratusan warga Perum GSI Ngangkruk dalam kegiatan sehat dan pemberdayaan ekonomi warga.',
-    content: `<p><strong>NGANGKRUK, SELOKATON</strong> — Karang Taruna Nawasena Perum Graha Selokaton Indah (GSI) sukses menggelar agenda tahunan Senam Sehat Bersama dan Bazaar UMKM Pemuda di area barat Lapangan Bola Ngangkruk, Minggu kemarin.</p><p>Acara dibuka secara resmi oleh Ketua RW 12 beserta Pengurus Karang Taruna Nawasena. Kegiatan ini dihadiri oleh lebih dari 300 warga yang antusias mengikuti senam aerobik sejak pukul 06.00 WIB, dilanjutkan dengan pengundian doorprize utama berupa sepeda gunung dan peralatan rumah tangga.</p><p>Selain senam, sebanyak 20 pelaku UMKM binaan pemuda menjajakan berbagai olahan kuliner lokal, kerajinan tangan, serta produk kebutuhan rumah tangga. Ketua Karang Taruna Nawasena mengungkapkan bahwa kegiatan ini bertujuan untuk mempererat tali silaturahmi antar warga perumahan sekaligus memicu pertumbuhan ekonomi skala mikro.</p><blockquote class="border-l-4 border-emerald-600 pl-4 italic my-4 text-emerald-800">"Sinergi antar pemuda dan warga senior di GSI Ngangkruk sangat terasa. InsyaAllah kegiatan serupa akan rutin digelar tiap triwulan," ujar Ketua Nawasena.</blockquote>`,
+    content: `<p><strong>NGANGKRUK, SELOKATON</strong> — Karang Taruna Nawasena Perum Graha Selokaton Indah (GSI) sukses menggelar agenda tahunan Senam Sehat Bersama dan Bazaar UMKM Pemuda di area barat Lapangan Bola Ngangkruk, Minggu kemarin.</p><p>Acara dibuka secara resmi oleh Ketua RW 15 beserta Pengurus Karang Taruna Nawasena. Kegiatan ini dihadiri oleh lebih dari 300 warga yang antusias mengikuti senam aerobik sejak pukul 06.00 WIB, dilanjutkan dengan pengundian doorprize utama berupa sepeda gunung dan peralatan rumah tangga.</p><p>Selain senam, sebanyak 20 pelaku UMKM binaan pemuda menjajakan berbagai olahan kuliner lokal, kerajinan tangan, serta produk kebutuhan rumah tangga. Ketua Karang Taruna Nawasena mengungkapkan bahwa kegiatan ini bertujuan untuk mempererat tali silaturahmi antar warga perumahan sekaligus memicu pertumbuhan ekonomi skala mikro.</p><blockquote class="border-l-4 border-emerald-600 pl-4 italic my-4 text-emerald-800">"Sinergi antar pemuda dan warga senior di GSI Ngangkruk sangat terasa. InsyaAllah kegiatan serupa akan rutin digelar tiap triwulan," ujar Ketua Nawasena.</blockquote>`,
     category: 'Kegiatan',
     author: 'Humas Nawasena',
     date: '2026-08-01',
@@ -509,7 +509,7 @@ export const initialFAQs: FAQItem[] = [
   {
     id: 'faq-1',
     question: 'Siapa saja yang bisa mendaftar menjadi anggota Karang Taruna Nawasena?',
-    answer: 'Seluruh pemuda pemudi berusia 13 hingga 45 tahun yang berdomisili atau bertempat tinggal di Perumahan Graha Selokaton Indah (GSI) RW 12 Ngangkruk, Desa Selokaton, Gondangrejo, Karanganyar.',
+    answer: 'Seluruh pemuda pemudi berusia 13 hingga 45 tahun yang berdomisili atau bertempat tinggal di Perumahan Graha Selokaton Indah (GSI) RW 15 Ngangkruk, Desa Selokaton, Gondangrejo, Karanganyar.',
     category: 'Keanggotaan'
   },
   {
@@ -565,7 +565,7 @@ export const initialSponsors: SponsorItem[] = [
   },
   {
     id: 'sp-2',
-    name: 'Pengurus RW 12 GSI Ngangkruk',
+    name: 'Pengurus RW 15 GSI Ngangkruk',
     logo: 'https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=300&auto=format&fit=crop&q=80',
     category: 'Mitra Utama'
   },

@@ -13,7 +13,7 @@ export const RegistrationForm: React.FC = () => {
     dob: '2005-01-01',
     gender: 'Laki-laki' as 'Laki-laki' | 'Perempuan',
     address: 'Perum Graha Selokaton Indah (GSI) Ngangkruk',
-    rtRw: 'RT 04 / RW 12',
+    rtRw: 'RT 04 / RW 15',
     whatsapp: '',
     email: '',
     education: 'SMA / S1 Sederajat',
@@ -269,7 +269,7 @@ export const RegistrationForm: React.FC = () => {
                     <input
                       type="text"
                       required
-                      placeholder="RT 03 / RW 12"
+                      placeholder="RT 03 / RW 15"
                       value={formData.rtRw}
                       onChange={e => setFormData({ ...formData, rtRw: e.target.value })}
                       className="w-full px-3.5 py-2.5 text-xs rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white focus:outline-none focus:border-emerald-500"

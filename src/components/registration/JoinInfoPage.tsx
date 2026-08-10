@@ -75,7 +75,7 @@ export const JoinInfoPage: React.FC = () => {
               <div>
                 <span className="text-xs font-bold text-slate-800 dark:text-slate-200 uppercase">Persyaratan Anggota:</span>
                 <ul className="mt-1 space-y-1 text-xs text-slate-600 dark:text-slate-300">
-                  <li>• Berdomisili di Perum Graha Selokaton Indah (GSI) RW 12 Ngangkruk.</li>
+                  <li>• Berdomisili di Perum Graha Selokaton Indah (GSI) RW 15 Ngangkruk.</li>
                   <li>• Usia produktif 13 s/d 45 tahun.</li>
                   <li>• Bersedia aktif mengikuti kegiatan kepemudaan.</li>
                   <li>• Mengisi data pendaftaran dengan jujur dan benar.</li>
