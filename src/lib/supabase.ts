@@ -15,13 +15,23 @@
 
 import { createClient } from '@supabase/supabase-js';
 
-const viteEnv = import.meta as any;
-const supabaseUrl = viteEnv.env?.VITE_SUPABASE_URL as string;
-const supabaseKey = viteEnv.env?.VITE_SUPABASE_ANON_KEY as string;
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL as string | undefined;
+const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY as string | undefined;
 
-if (!supabaseUrl || supabaseUrl === 'https://GANTI.supabase.co') {
-  console.warn('[Supabase] VITE_SUPABASE_URL belum diisi di .env.local');
+console.log('[DEBUG] VITE_SUPABASE_URL:', supabaseUrl);
+console.log('[DEBUG] VITE_SUPABASE_ANON_KEY prefix:', supabaseKey?.substring(0, 20));
+
+if (!supabaseUrl || !supabaseKey) {
+  console.error(
+    '[Supabase] VITE_SUPABASE_URL atau VITE_SUPABASE_ANON_KEY belum diisi di .env.local.\n' +
+    'Pastikan file .env.local ada di root project dan server sudah di-restart setelah mengubah .env.local.'
+  );
 }
 
-export const supabase = createClient(supabaseUrl, supabaseKey);
+// Use fallback placeholder to prevent createClient from throwing during SSR/build,
+// actual API calls will fail gracefully instead of crashing the entire app.
+export const supabase = createClient(
+  supabaseUrl || 'https://placeholder.supabase.co',
+  supabaseKey || 'placeholder-key'
+);
 export default supabase;

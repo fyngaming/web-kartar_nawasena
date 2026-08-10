@@ -9,10 +9,10 @@ interface LogoProps {
 
 export const Logo: React.FC<LogoProps> = ({ size = 'md', showText = true, className = '' }) => {
   const dimensions = {
-    sm: 'w-12 h-12',
-    md: 'w-16 h-16',
-    lg: 'w-24 h-24',
-    xl: 'w-32 h-32'
+    sm: 'w-14 h-14',
+    md: 'w-20 h-20',
+    lg: 'w-28 h-28',
+    xl: 'w-36 h-36'
   };
 
   return (
@@ -28,10 +28,10 @@ export const Logo: React.FC<LogoProps> = ({ size = 'md', showText = true, classN
 
       {showText && (
         <div className="flex flex-col">
-          <span className="font-extrabold text-emerald-950 dark:text-white leading-tight tracking-tight text-base sm:text-lg">
+          <span className="font-extrabold text-emerald-950 dark:text-white leading-tight tracking-tight text-xs sm:text-sm">
             KARANG TARUNA <span className="text-emerald-700 dark:text-emerald-400">NAWASENA</span>
           </span>
-          <span className="text-[11px] sm:text-xs font-semibold text-amber-600 dark:text-amber-400 flex items-center gap-1">
+          <span className="text-[10px] sm:text-[11px] font-semibold text-amber-600 dark:text-amber-400 flex items-center gap-1">
             <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse inline-block"></span>
             Perum GSI Ngangkruk — Selokaton
           </span>

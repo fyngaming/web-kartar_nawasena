@@ -4,6 +4,9 @@ import path from 'path';
 import { defineConfig } from 'vite';
 
 export default defineConfig(() => {
+  console.log('[VITE CONFIG] process.cwd():', process.cwd());
+  console.log('[VITE CONFIG] process.env.VITE_SUPABASE_URL:', process.env.VITE_SUPABASE_URL);
+  console.log('[VITE CONFIG] process.env.VITE_SUPABASE_ANON_KEY prefix:', process.env.VITE_SUPABASE_ANON_KEY?.substring(0, 20));
   return {
     plugins: [react(), tailwindcss()],
     resolve: {

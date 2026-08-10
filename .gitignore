@@ -9,3 +9,5 @@ coverage/
 
 # Local video assets (large files — serve locally via public/videos/)
 public/videos/
+
+.vercel

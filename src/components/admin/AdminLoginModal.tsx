@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
-import { ShieldCheck, X, KeyRound, AlertCircle, LogIn } from 'lucide-react';
+import { ShieldCheck, X, KeyRound, AlertCircle, LogIn, User } from 'lucide-react';
 
 const AUTH_CREDENTIALS: Record<string, { password: string; role: 'Admin' | 'Editor' | 'Bendahara' }> = {
   adminKartarNawasenaGsI: { password: 'AdminGanteng_$123', role: 'Admin' },
@@ -13,6 +13,7 @@ export const AdminLoginModal: React.FC<{ isOpen: boolean; onClose: () => void }>
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
 
   if (!isOpen) return null;
 
@@ -35,19 +36,23 @@ export const AdminLoginModal: React.FC<{ isOpen: boolean; onClose: () => void }>
     setCurrentUser(foundUser);
     setIsAdminMode(true);
     setError('');
+    setUsername('');
+    setPassword('');
     onClose();
   };
 
-  const handleQuickDemo = (demoUsername: string) => {
-    setUsername(demoUsername);
-    setPassword(AUTH_CREDENTIALS[demoUsername]?.password || '');
+  const handleClose = () => {
+    setUsername('');
+    setPassword('');
+    setError('');
+    onClose();
   };
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md animate-fadeIn">
       <div className="relative w-full max-w-md p-6 sm:p-8 rounded-3xl bg-slate-900/90 border border-white/20 shadow-2xl backdrop-blur-2xl text-white">
         <button
-          onClick={onClose}
+          onClick={handleClose}
           className="absolute top-4 right-4 p-2 rounded-full bg-white/10 hover:bg-white/20 text-slate-300 hover:text-white transition-colors"
         >
           <X className="w-5 h-5" />
@@ -61,7 +66,7 @@ export const AdminLoginModal: React.FC<{ isOpen: boolean; onClose: () => void }>
           </div>
           <h3 className="text-xl font-bold text-white">Portal Login Pengurus</h3>
           <p className="text-xs text-slate-300 mt-1">
-            Masuk dengan username dan password Pengurus
+            Masukkan username dan password Anda untuk mengakses dashboard
           </p>
         </div>
 
@@ -78,13 +83,14 @@ export const AdminLoginModal: React.FC<{ isOpen: boolean; onClose: () => void }>
               Username Pengurus
             </label>
             <div className="relative">
-              <KeyRound className="w-4 h-4 text-slate-400 absolute left-3.5 top-3" />
+              <User className="w-4 h-4 text-slate-400 absolute left-3.5 top-3" />
               <input
                 type="text"
                 required
                 value={username}
                 onChange={e => setUsername(e.target.value)}
-                placeholder="adminKartarNawasenaGsI"
+                placeholder="Masukkan username"
+                autoComplete="off"
                 className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-white/5 border border-white/15 focus:border-amber-400 focus:ring-1 focus:ring-amber-400 text-sm text-white placeholder-slate-500 outline-none transition-all"
               />
             </div>
@@ -97,13 +103,21 @@ export const AdminLoginModal: React.FC<{ isOpen: boolean; onClose: () => void }>
             <div className="relative">
               <KeyRound className="w-4 h-4 text-slate-400 absolute left-3.5 top-3" />
               <input
-                type="password"
+                type={showPassword ? 'text' : 'password'}
                 required
                 value={password}
                 onChange={e => setPassword(e.target.value)}
-                placeholder="••••••••"
-                className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-white/5 border border-white/15 focus:border-amber-400 focus:ring-1 focus:ring-amber-400 text-sm text-white placeholder-slate-500 outline-none transition-all"
+                placeholder="Masukkan password"
+                autoComplete="off"
+                className="w-full pl-10 pr-12 py-2.5 rounded-xl bg-white/5 border border-white/15 focus:border-amber-400 focus:ring-1 focus:ring-amber-400 text-sm text-white placeholder-slate-500 outline-none transition-all"
               />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-3 top-2.5 text-[10px] font-semibold text-slate-400 hover:text-amber-400 transition-colors px-1 py-0.5 rounded"
+              >
+                {showPassword ? 'Tutup' : 'Lihat'}
+              </button>
             </div>
           </div>
 
@@ -116,40 +130,14 @@ export const AdminLoginModal: React.FC<{ isOpen: boolean; onClose: () => void }>
           </button>
         </form>
 
-        <div className="mt-6 pt-5 border-t border-white/10">
-          <p className="text-[11px] font-semibold text-amber-300 text-center uppercase tracking-wider mb-2">
-            Akses Cepat (Demo)
+        <div className="mt-5 pt-4 border-t border-white/10 text-center">
+          <p className="text-[10px] text-slate-500">
+            Hanya pengurus resmi Karang Taruna Nawasena yang memiliki akses.
+            <br />Hubungi admin jika Anda lupa kredensial.
           </p>
-          <div className="grid grid-cols-2 gap-2">
-            <button
-              type="button"
-              onClick={() => handleQuickDemo('adminKartarNawasenaGsI')}
-              className="px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-[11px] text-slate-200 text-left transition-colors"
-            >
-              <span className="font-bold block text-emerald-400">Admin</span>
-              <span className="text-[10px] text-slate-400">adminKartarNawasenaGsI</span>
-            </button>
-
-            <button
-              type="button"
-              onClick={() => handleQuickDemo('SekreKartar_Nawasena')}
-              className="px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-[11px] text-slate-200 text-left transition-colors"
-            >
-              <span className="font-bold block text-amber-400">Sekretaris</span>
-              <span className="text-[10px] text-slate-400">SekreKartar_Nawasena</span>
-            </button>
-
-            <button
-              type="button"
-              onClick={() => handleQuickDemo('BendaharaKartar_Nawasena')}
-              className="px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-[11px] text-slate-200 text-left transition-colors"
-            >
-              <span className="font-bold block text-emerald-300">Bendahara</span>
-              <span className="text-[10px] text-slate-400">BendaharaKartar_Nawasena</span>
-            </button>
-          </div>
         </div>
       </div>
     </div>
   );
 };
+
