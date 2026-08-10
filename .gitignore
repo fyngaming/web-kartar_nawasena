@@ -7,7 +7,7 @@ coverage/
 .env*
 !.env.example
 
-# Local video assets (large files — serve locally via public/videos/)
-public/videos/
+# Local video assets
+
 
 .vercel

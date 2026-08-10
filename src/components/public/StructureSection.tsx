@@ -27,50 +27,58 @@ export const StructureSection: React.FC = () => {
         </div>
 
         {/* Board Members Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {sortedBoard.map((member) => (
-            <div
-              key={member.id}
-              className="group bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 overflow-hidden shadow-sm hover:shadow-xl hover:border-emerald-500/40 transition-all text-center flex flex-col items-center p-6"
-            >
-              {/* Photo */}
-              <div className="relative w-32 h-32 rounded-full overflow-hidden border-4 border-emerald-600/30 group-hover:border-amber-400 transition-all mb-4 shadow-md">
-                {member.photo ? (
-                  <img
-                    src={member.photo}
-                    alt={member.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    onError={e => {
-                      (e.currentTarget as HTMLImageElement).style.display = 'none';
-                      (e.currentTarget.parentElement!.querySelector('.fallback-icon') as HTMLElement).style.display = 'flex';
-                    }}
-                  />
-                ) : null}
-                <div
-                  className="fallback-icon w-full h-full bg-slate-700 items-center justify-center"
-                  style={{ display: member.photo ? 'none' : 'flex' }}
-                >
-                  <User className="w-12 h-12 text-slate-400" />
+        {sortedBoard.length === 0 ? (
+          <div className="text-center py-12 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 max-w-md mx-auto">
+            <User className="w-12 h-12 text-slate-400 mx-auto mb-3 opacity-60" />
+            <p className="text-slate-300 font-semibold text-sm">Belum Ada Data Pengurus</p>
+            <p className="text-xs text-slate-400 mt-1">Data struktur organisasi dapat ditambahkan melalui panel Admin.</p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {sortedBoard.map((member) => (
+              <div
+                key={member.id}
+                className="group bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 overflow-hidden shadow-sm hover:shadow-xl hover:border-emerald-500/40 transition-all text-center flex flex-col items-center p-6"
+              >
+                {/* Photo */}
+                <div className="relative w-32 h-32 rounded-full overflow-hidden border-4 border-emerald-600/30 group-hover:border-amber-400 transition-all mb-4 shadow-md">
+                  {member.photo ? (
+                    <img
+                      src={member.photo}
+                      alt={member.name}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      onError={e => {
+                        (e.currentTarget as HTMLImageElement).style.display = 'none';
+                        (e.currentTarget.parentElement!.querySelector('.fallback-icon') as HTMLElement).style.display = 'flex';
+                      }}
+                    />
+                  ) : null}
+                  <div
+                    className="fallback-icon w-full h-full bg-slate-700 items-center justify-center"
+                    style={{ display: member.photo ? 'none' : 'flex' }}
+                  >
+                    <User className="w-12 h-12 text-slate-400" />
+                  </div>
                 </div>
+
+                {/* Position Tag */}
+                <span className="px-3 py-1 text-xs font-bold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 mb-3">
+                  {member.position}
+                </span>
+
+                {/* Name */}
+                <h3 className="text-lg font-extrabold text-white leading-snug">
+                  {member.name}
+                </h3>
+
+                {/* Tenure Period */}
+                <p className="text-xs font-semibold text-amber-400 mt-1.5">
+                  Masa Bakti: {member.period}
+                </p>
               </div>
-
-              {/* Position Tag */}
-              <span className="px-3 py-1 text-xs font-bold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 mb-3">
-                {member.position}
-              </span>
-
-              {/* Name */}
-              <h3 className="text-lg font-extrabold text-white leading-snug">
-                {member.name}
-              </h3>
-
-              {/* Tenure Period */}
-              <p className="text-xs font-semibold text-amber-400 mt-1.5">
-                Masa Bakti: {member.period}
-              </p>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
