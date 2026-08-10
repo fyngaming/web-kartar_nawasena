@@ -4,7 +4,11 @@ import {
   AgendaItem, GalleryItem, BoardMember, AchievementItem, FeedbackItem,
   FAQItem, SponsorItem, UserAccount, UserRole, MeetingMinutes, FinancialTransaction
 } from '../types';
-import { initialSiteSettings, initialAdminUsers, initialFAQs } from '../data/initialData';
+import {
+  initialSiteSettings, initialAdminUsers, initialFAQs,
+  initialNews, initialPrograms, initialAgenda, initialGallery,
+  initialBoardMembers, initialAchievements
+} from '../data/initialData';
 import * as svc from '../lib/supabaseService';
 import { supabase } from '../lib/supabase';
 
@@ -166,18 +170,18 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
           board: boardData.length, members: membersData.length
         });
         if (settings) setSiteSettings(settings as SiteSettings);
-        setNews(newsData);
-        setPrograms(programsData);
-        setAgenda(agendaData);
-        setGallery(galleryData);
-        setBoard(boardData);
+        setNews(newsData.length > 0 ? newsData : initialNews);
+        setPrograms(programsData.length > 0 ? programsData : initialPrograms);
+        setAgenda(agendaData.length > 0 ? agendaData : initialAgenda);
+        setGallery(galleryData.length > 0 ? galleryData : initialGallery);
+        setBoard(boardData.length > 0 ? boardData : initialBoardMembers);
         setMembers(membersData);
         setRegistrations(regsData);
         setFeedbacks(feedbacksData);
         setFaqs(faqsData.length > 0 ? faqsData : initialFAQs);
         setMeetingMinutes(minutesData);
         setTransactions(transactionsData || []);
-        setAchievements(achievementsData);
+        setAchievements(achievementsData.length > 0 ? achievementsData : initialAchievements);
       } catch (err) {
         console.error('[AppContext] Gagal load data dari Supabase:', err);
       } finally {
