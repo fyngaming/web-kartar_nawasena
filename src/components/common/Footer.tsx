@@ -1,7 +1,7 @@
 import React from 'react';
 import { Logo } from './Logo';
 import { useApp, PublicTab } from '../../context/AppContext';
-import { MapPin, Phone, Mail, Shield, ArrowUp } from 'lucide-react';
+import { MapPin, Mail, Shield, ArrowUp } from 'lucide-react';
 
 export const Footer: React.FC<{ onOpenAdminLogin: () => void }> = ({ onOpenAdminLogin }) => {
   const { siteSettings, setActiveTab } = useApp();
@@ -131,12 +131,6 @@ export const Footer: React.FC<{ onOpenAdminLogin: () => void }> = ({ onOpenAdmin
                 <span className="text-slate-400 leading-tight">
                   {siteSettings.address}, {siteSettings.subDistrict}, {siteSettings.city} ({siteSettings.postalCode})
                 </span>
-              </div>
-              <div className="flex items-center gap-2.5">
-                <Phone className="w-4 h-4 text-emerald-500 shrink-0" />
-                <a href={`https://wa.me/${siteSettings.whatsapp}`} target="_blank" rel="noopener noreferrer" className="hover:text-amber-400 transition-colors">
-                  +{siteSettings.whatsapp} (WhatsApp Center)
-                </a>
               </div>
               <div className="flex items-center gap-2.5">
                 <Mail className="w-4 h-4 text-emerald-500 shrink-0" />
