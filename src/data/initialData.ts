@@ -51,7 +51,7 @@ export const initialSiteSettings: SiteSettings = {
 export const initialAdminUsers: UserAccount[] = [
   {
     id: 'usr-1',
-    name: 'Favian Yusuf (Ketua Umum)',
+    name: 'Favian Yusuf',
     username: 'adminKartarNawasenaGsI',
     email: 'admin@nawasena.or.id',
     role: 'Admin',
@@ -393,17 +393,6 @@ export const initialGallery: GalleryItem[] = [
 
 export const initialBoardMembers: BoardMember[] = [
   {
-    id: 'board-1',
-    name: 'Favian Yusuf',
-    position: 'Ketua Umum',
-    period: '2024 - 2026',
-    photo: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80',
-    order: 1,
-    phone: '081234567890',
-    email: 'favian.yusuf@nawasena.or.id',
-    instagram: '@favianyusuf'
-  },
-  {
     id: 'board-2',
     name: 'Ahmad Faisal',
     position: 'Wakil Ketua',
@@ -587,12 +576,12 @@ export const initialMeetingMinutes: import('../types').MeetingMinutes[] = [
     startTime: '19:30',
     endTime: '21:30',
     location: 'Sekretariat GSI Ngangkruk',
-    facilitator: 'Favian Yusuf (Ketua)',
+      facilitator: 'Favian Yusuf',
     secretary: 'Rian Prasetyo (Sekretaris)',
     attendees: 'Favian Yusuf, Rian Prasetyo, Siti Rahmawati, Aris Nugroho, Bagas Aditya',
     absentees: '-',
     quorum: 'Kuorum Terpenuhi (15 Pengurus)',
-    openingNotes: 'Rapat dibuka pukul 19.35 WIB oleh Ketua Umum dengan doa bersama dan pembacaan agenda rapat.',
+      openingNotes: 'Rapat dibuka pukul 19.35 WIB dengan doa bersama dan pembacaan agenda rapat.',
     agendaPoints: [
       {
         no: 1,
