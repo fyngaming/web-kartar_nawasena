@@ -174,38 +174,38 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
           agenda: agendaData.length, gallery: galleryData.length,
           board: boardData.length, members: membersData.length
         });
-        if (settings) setSiteSettings(settings as SiteSettings);
-
-        const isSeeded = typeof window !== 'undefined' && localStorage.getItem('KT_DB_SEEDED_V2');
-        if (isSeeded) {
-          setNews(newsData);
-          setPrograms(programsData);
-          setAgenda(agendaData);
-          setGallery(galleryData);
-          setBoard(boardData);
-          setMembers(membersData);
-          setRegistrations(regsData);
-          setFeedbacks(feedbacksData);
-          setFaqs(faqsData);
-          setMeetingMinutes(minutesData);
-          setTransactions(transactionsData || []);
-          setAchievements(achievementsData);
+        if (settings && Object.keys(settings).length > 0) {
+          setSiteSettings(settings as SiteSettings);
         } else {
-          setNews(newsData.length > 0 ? newsData : initialNews);
-          setPrograms(programsData.length > 0 ? programsData : initialPrograms);
-          setAgenda(agendaData.length > 0 ? agendaData : initialAgenda);
-          setGallery(galleryData.length > 0 ? galleryData : initialGallery);
-          setBoard(boardData.length > 0 ? boardData : initialBoardMembers);
-          setMembers(membersData.length > 0 ? membersData : initialMembers);
-          setRegistrations(regsData.length > 0 ? regsData : initialRegistrations);
-          setFeedbacks(feedbacksData);
-          setFaqs(faqsData.length > 0 ? faqsData : initialFAQs);
-          setMeetingMinutes(minutesData.length > 0 ? minutesData : initialMeetingMinutes);
-          setTransactions(transactionsData && transactionsData.length > 0 ? transactionsData : initialTransactions);
-          setAchievements(achievementsData.length > 0 ? achievementsData : initialAchievements);
+          setSiteSettings(initialSiteSettings);
         }
+
+        setNews(newsData && newsData.length > 0 ? newsData : initialNews);
+        setPrograms(programsData && programsData.length > 0 ? programsData : initialPrograms);
+        setAgenda(agendaData && agendaData.length > 0 ? agendaData : initialAgenda);
+        setGallery(galleryData && galleryData.length > 0 ? galleryData : initialGallery);
+        setBoard(boardData && boardData.length > 0 ? boardData : initialBoardMembers);
+        setMembers(membersData && membersData.length > 0 ? membersData : initialMembers);
+        setRegistrations(regsData && regsData.length > 0 ? regsData : initialRegistrations);
+        setFeedbacks(feedbacksData || []);
+        setFaqs(faqsData && faqsData.length > 0 ? faqsData : initialFAQs);
+        setMeetingMinutes(minutesData && minutesData.length > 0 ? minutesData : initialMeetingMinutes);
+        setTransactions(transactionsData && transactionsData.length > 0 ? transactionsData : initialTransactions);
+        setAchievements(achievementsData && achievementsData.length > 0 ? achievementsData : initialAchievements);
       } catch (err) {
-        console.error('[AppContext] Gagal load data dari Supabase:', err);
+        console.error('[AppContext] Gagal load data dari Supabase, menggunakan default data:', err);
+        setSiteSettings(initialSiteSettings);
+        setNews(initialNews);
+        setPrograms(initialPrograms);
+        setAgenda(initialAgenda);
+        setGallery(initialGallery);
+        setBoard(initialBoardMembers);
+        setMembers(initialMembers);
+        setRegistrations(initialRegistrations);
+        setFaqs(initialFAQs);
+        setMeetingMinutes(initialMeetingMinutes);
+        setTransactions(initialTransactions);
+        setAchievements(initialAchievements);
       } finally {
         if (!cancelled) setLoading(false);
       }
@@ -531,19 +531,19 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   // ── Reset ──────────────────────────────────────────────────────────────────
   const resetToDefaultData = useCallback(() => {
-    // Reset hanya local state — tidak hapus Supabase
     setSiteSettings(initialSiteSettings);
-    setMembers([]);
-    setRegistrations([]);
-    setNews([]);
-    setPrograms([]);
-    setAgenda([]);
-    setGallery([]);
-    setBoard([]);
-    setAchievements([]);
+    setMembers(initialMembers);
+    setRegistrations(initialRegistrations);
+    setNews(initialNews);
+    setPrograms(initialPrograms);
+    setAgenda(initialAgenda);
+    setGallery(initialGallery);
+    setBoard(initialBoardMembers);
+    setAchievements(initialAchievements);
     setFeedbacks([]);
-    setFaqs([]);
-    setMeetingMinutes([]);
+    setFaqs(initialFAQs);
+    setMeetingMinutes(initialMeetingMinutes);
+    setTransactions(initialTransactions);
   }, []);
 
   return (
