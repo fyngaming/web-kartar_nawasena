@@ -61,10 +61,11 @@ export const RegistrationForm: React.FC = () => {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
 
-    const created = addRegistration({
+  try {
+    const created = await addRegistration({
       fullName: formData.fullName,
       pob: formData.pob,
       dob: formData.dob,
@@ -79,11 +80,14 @@ export const RegistrationForm: React.FC = () => {
       motivation: formData.motivation,
       orgExperience: formData.orgExperience,
       photoUrl: formData.photo || undefined,
-      documentUrl: formData.docFileName ? `Dokumen: ${formData.docFileName}` : undefined
+      documentUrl: formData.docFileName ? `Dokumen: ${formData.docFileName}` : undefined,
     });
-
     setSubmittedResult(created);
-  };
+  } catch (err) {
+    console.error('Failed to submit registration:', err);
+    // Optionally show user feedback here
+  }
+};
 
   const handleCopyId = () => {
     if (submittedResult) {
